@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Oferta Smartwatch">
+  <defs>
+    <linearGradient id="fwa-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="fwa-screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#fwa-bg)"/>
+  <rect x="400" y="95" width="160" height="420" rx="42" fill="#0b1220"/>
+  <rect x="370" y="185" width="220" height="230" rx="34" fill="#111827"/>
+  <rect x="395" y="210" width="170" height="180" rx="22" fill="url(#fwa-screen)"/>
+  <path d="M445 285h70" stroke="#0f172a" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="480" cy="305" r="24" fill="#0f172a"/>
+  <text x="70" y="545" fill="#f8fafc" font-family="Arial, sans-serif" font-size="52" font-weight="700">Smartwatch Pulse Fit</text>
+</svg>

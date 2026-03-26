@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="Audio product">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" fill="url(#g1)"/>
+  <circle cx="245" cy="210" r="72" fill="#0f172a" opacity="0.85"/>
+  <circle cx="395" cy="210" r="72" fill="#0f172a" opacity="0.85"/>
+  <rect x="245" y="130" width="150" height="24" rx="12" fill="#0f172a" opacity="0.75"/>
+  <text x="34" y="382" fill="#ffffff" font-family="Arial, sans-serif" font-size="34" font-weight="700">Audio Premium</text>
+</svg>

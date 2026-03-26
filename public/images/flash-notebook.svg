@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Oferta Notebook">
+  <defs>
+    <linearGradient id="fnb-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="fnb-screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#fnb-bg)"/>
+  <rect x="230" y="130" width="500" height="280" rx="16" fill="#0b1220"/>
+  <rect x="250" y="150" width="460" height="230" rx="10" fill="url(#fnb-screen)"/>
+  <path d="M170 430h620l-64 42H234z" fill="#e2e8f0"/>
+  <text x="70" y="545" fill="#f8fafc" font-family="Arial, sans-serif" font-size="52" font-weight="700">Notebook Air 14</text>
+</svg>

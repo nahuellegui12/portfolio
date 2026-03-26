@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-label="Fashion category">
+  <defs>
+    <linearGradient id="c3" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#7c2d12"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" fill="url(#c3)"/>
+  <path d="M360 220h180l40 120H320z" fill="#f8fafc" opacity="0.2"/>
+  <rect x="370" y="330" width="160" height="170" rx="12" fill="#f8fafc" opacity="0.16"/>
+  <text x="120" y="560" fill="#ffffff" font-family="Arial, sans-serif" font-size="84" font-weight="700">Moda</text>
+</svg>

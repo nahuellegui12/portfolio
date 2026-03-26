@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Oferta Aspiradora Robot">
+  <defs>
+    <linearGradient id="frob-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#frob-bg)"/>
+  <rect x="80" y="350" width="800" height="170" rx="12" fill="#cbd5e1" opacity="0.22"/>
+  <circle cx="470" cy="330" r="150" fill="#f8fafc"/>
+  <circle cx="470" cy="330" r="114" fill="#e2e8f0"/>
+  <circle cx="470" cy="330" r="18" fill="#64748b"/>
+  <text x="70" y="545" fill="#f8fafc" font-family="Arial, sans-serif" font-size="52" font-weight="700">Aspiradora Robot</text>
+</svg>
