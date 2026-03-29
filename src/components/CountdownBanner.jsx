@@ -28,6 +28,8 @@ function CountdownBanner({
 }) {
   const [isExpanded, setIsExpanded] = useState(false)
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(targetDate))
+  const [flashCurrentPage, setFlashCurrentPage] = useState(0)
+  const [flashTotalPages, setFlashTotalPages] = useState(1)
   const panelId = 'countdown-collection-panel'
   const flashSliderRef = useRef(null)
 
@@ -50,16 +52,84 @@ function CountdownBanner({
   )
 
   const scrollFlashSlider = (direction) => {
+    goToFlashPage(flashCurrentPage + direction)
+  }
+
+  const updateFlashPagination = () => {
     if (!flashSliderRef.current) {
       return
     }
 
-    const amount = flashSliderRef.current.clientWidth * 0.82
-    flashSliderRef.current.scrollBy({
-      left: amount * direction,
+    const slider = flashSliderRef.current
+    const firstSlide = slider.querySelector('.flash-offer-slide')
+
+    if (!firstSlide) {
+      setFlashCurrentPage(0)
+      setFlashTotalPages(1)
+      return
+    }
+
+    const computedStyles = window.getComputedStyle(slider)
+    const gap = Number.parseFloat(computedStyles.columnGap || computedStyles.gap || '0') || 0
+    const cardWidth = firstSlide.getBoundingClientRect().width
+    const step = cardWidth + gap
+    const cardsPerView = Math.max(1, Math.round((slider.clientWidth + gap) / step))
+    const nextTotalPages = Math.max(1, Math.ceil(flashOffers.length / cardsPerView))
+    const maxScroll = Math.max(0, slider.scrollWidth - slider.clientWidth)
+    const progress = maxScroll > 0 ? slider.scrollLeft / maxScroll : 0
+    const nextPage = Math.min(
+      nextTotalPages - 1,
+      Math.max(0, Math.round(progress * (nextTotalPages - 1))),
+    )
+
+    setFlashTotalPages(nextTotalPages)
+    setFlashCurrentPage(nextPage)
+  }
+
+  const goToFlashPage = (pageIndex) => {
+    if (!flashSliderRef.current) {
+      return
+    }
+
+    const slider = flashSliderRef.current
+    const clampedPage = Math.min(Math.max(pageIndex, 0), flashTotalPages - 1)
+    const maxScroll = Math.max(0, slider.scrollWidth - slider.clientWidth)
+    const targetScrollLeft =
+      flashTotalPages > 1 ? (maxScroll * clampedPage) / (flashTotalPages - 1) : 0
+
+    slider.scrollTo({
+      left: targetScrollLeft,
       behavior: 'smooth',
     })
   }
+
+  useEffect(() => {
+    if (!flashSliderRef.current) {
+      return undefined
+    }
+
+    const slider = flashSliderRef.current
+    const handleScroll = () => updateFlashPagination()
+
+    updateFlashPagination()
+    slider.addEventListener('scroll', handleScroll, { passive: true })
+
+    let resizeObserver
+    if (typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(() => {
+        updateFlashPagination()
+      })
+      resizeObserver.observe(slider)
+    }
+
+    window.addEventListener('resize', updateFlashPagination)
+
+    return () => {
+      slider.removeEventListener('scroll', handleScroll)
+      resizeObserver?.disconnect()
+      window.removeEventListener('resize', updateFlashPagination)
+    }
+  }, [flashOffers.length])
 
   return (
     <article className="countdown-card">
@@ -135,6 +205,22 @@ function CountdownBanner({
                     <em>{offer.discount}</em>
                   </p>
                 </a>
+              ))}
+            </div>
+
+            <div className="flash-slider-pagination" role="tablist" aria-label="Paginacion de ofertas flash">
+              {Array.from({ length: flashTotalPages }, (_, index) => (
+                <button
+                  key={`flash-dot-${index}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={flashCurrentPage === index}
+                  aria-label={`Ir a pagina ${index + 1}`}
+                  className={
+                    flashCurrentPage === index ? 'flash-slider-dot is-active' : 'flash-slider-dot'
+                  }
+                  onClick={() => goToFlashPage(index)}
+                />
               ))}
             </div>
           </section>
